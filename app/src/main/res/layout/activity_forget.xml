@@ -1,69 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:background="@drawable/login_bg"
     android:orientation="vertical"
     android:padding="10dp">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/change_password"
-        android:textColor="@color/colorPrimary"
-        android:textSize="30sp"/>
-
-    <EditText
-        android:id="@+id/et_now"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/old_pass"
-        android:inputType="textPassword"/>
-
-    <EditText
-        android:id="@+id/et_new"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/new_pass"
-        android:inputType="textPassword"/>
-
-    <EditText
-        android:id="@+id/et_new_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/please_input_again"
-        android:inputType="textPassword"/>
-
-    <Button
-        android:id="@+id/btn_update_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_bg"
-        android:text="@string/change_password"
-        android:textColor="#fff"/>
-
-    <TextView
+        android:layout_gravity="center"
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="@string/forgot_password"
         android:textColor="@color/colorPrimary"
-        android:textSize="30sp"/>
+        android:textSize="25sp" />
 
-    <EditText
-        android:id="@+id/et_email"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/email"/>
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/edit_bg">
+
+        <EditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="#0000"
+            android:hint="@string/email" />
+
+    </LinearLayout>
 
     <Button
+        android:layout_gravity="center"
         android:id="@+id/btn_forget_password"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/button_bg"
-        android:text="@string/forgot_password"
-        android:textColor="#fff"/>
+        android:paddingLeft="80dp"
+        android:paddingRight="80dp"
+        android:text="@string/positive"
+        android:textColor="#fff" />
+
+    <TextView
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:id="@+id/tv_forget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/go_to_forgot_password"
+        android:textColor="#323232" />
 
 </LinearLayout>

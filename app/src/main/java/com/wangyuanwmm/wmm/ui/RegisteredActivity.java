@@ -1,6 +1,7 @@
 package com.wangyuanwmm.wmm.ui;
 
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -18,7 +19,7 @@ import cn.bmob.v3.listener.SaveListener;
  * 注册页面
  */
 
-public class RegisteredActivity extends BaseActivity implements View.OnClickListener {
+public class RegisteredActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText et_user, et_age, et_desc, et_pass, et_password, et_email;
     private RadioGroup mRadioGroup;

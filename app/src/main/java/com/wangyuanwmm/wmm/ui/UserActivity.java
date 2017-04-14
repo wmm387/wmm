@@ -7,6 +7,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
@@ -33,10 +37,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * 个人中心
  */
 
-public class UserActivity extends Activity implements View.OnClickListener {
+public class UserActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button btn_update_ok;
-    private TextView tv_edit,tv_exit;
+    private TextView tv_edit,tv_exit,tv_change,tv_update_ok;
 
     private EditText et_username,et_age,et_sex,et_desc;
     //圆形图片
@@ -58,13 +61,25 @@ public class UserActivity extends Activity implements View.OnClickListener {
 
     //初始化View
     private void findView() {
-        btn_update_ok = (Button) findViewById(R.id.btn_update_ok);
-        btn_update_ok.setOnClickListener(this);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
         tv_edit = (TextView) findViewById(R.id.tv_edit);
         tv_exit = (TextView) findViewById(R.id.tv_exit);
+        tv_change = (TextView) findViewById(R.id.tv_change_password);
+        tv_update_ok = (TextView) findViewById(R.id.tv_update_ok);
+
         tv_edit.setOnClickListener(this);
         tv_exit.setOnClickListener(this);
+        tv_change.setOnClickListener(this);
+        tv_update_ok.setOnClickListener(this);
 
         et_username = (EditText) findViewById(R.id.et_username);
         et_sex = (EditText) findViewById(R.id.et_sex);
@@ -124,12 +139,17 @@ public class UserActivity extends Activity implements View.OnClickListener {
                 finish();
                 break;
 
-            case R.id.tv_edit:
-                setEnable(true);
-                btn_update_ok.setVisibility(View.VISIBLE);
+            case R.id.tv_change_password:
+                startActivity(new Intent(this,UpdatePasswordActivity.class));
                 break;
 
-            case R.id.btn_update_ok:
+            case R.id.tv_edit:
+                setEnable(true);
+                tv_update_ok.setVisibility(View.VISIBLE);
+                tv_edit.setVisibility(View.GONE);
+                break;
+
+            case R.id.tv_update_ok:
                 //拿到输入框的值
                 String username = et_username.getText().toString();
                 String age = et_age.getText().toString();
@@ -167,7 +187,8 @@ public class UserActivity extends Activity implements View.OnClickListener {
                             if (e == null) {
                                 //修改成功
                                 setEnable(false);
-                                btn_update_ok.setVisibility(View.GONE);
+                                tv_update_ok.setVisibility(View.GONE);
+                                tv_edit.setVisibility(View.VISIBLE);
                                 Toast.makeText(getApplicationContext(), R.string.text_editor_success, Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(getApplicationContext(), R.string.text_editor_failure, Toast.LENGTH_SHORT).show();
@@ -181,17 +202,18 @@ public class UserActivity extends Activity implements View.OnClickListener {
                 break;
 
             case R.id.profile_image:
-                dialog.show();
+//                dialog.show();
+                toPicture();
                 break;
-            case R.id.btn_cancel:
-                dialog.dismiss();
-                break;
+//            case R.id.btn_cancel:
+//                dialog.dismiss();
+//                break;
 //            case R.id.btn_camera:
 //                toCamera();
 //                break;
-            case R.id.btn_picture:
-                toPicture();
-                break;
+//            case R.id.btn_picture:
+//                toPicture();
+//                break;
         }
     }
 
@@ -202,15 +224,15 @@ public class UserActivity extends Activity implements View.OnClickListener {
     private File tempFile = null;
 
     //跳转相机
-    private void toCamera() {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        //判断内存卡是否可用，可用则进行储存
-        intent.putExtra(MediaStore.EXTRA_OUTPUT,
-                Uri.fromFile(new File(Environment.getExternalStorageDirectory(),
-                        PHOTO_FILE_NAME)));
-        startActivityForResult(intent, CAMERA_REQUEST_CODE);
-        dialog.dismiss();
-    }
+//    private void toCamera() {
+//        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//        //判断内存卡是否可用，可用则进行储存
+//        intent.putExtra(MediaStore.EXTRA_OUTPUT,
+//                Uri.fromFile(new File(Environment.getExternalStorageDirectory(),
+//                        PHOTO_FILE_NAME)));
+//        startActivityForResult(intent, CAMERA_REQUEST_CODE);
+//        dialog.dismiss();
+//    }
 
     //跳转相册
     private void toPicture() {

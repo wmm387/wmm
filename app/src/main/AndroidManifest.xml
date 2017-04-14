@@ -51,33 +51,31 @@
         <!-- 登录 -->
         <activity
             android:name=".ui.LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/NoActionBarFullscreen"/>
         <!-- 注册页面 -->
         <activity
             android:name=".ui.RegisteredActivity"
-            android:label="@string/sign_up"/>
+            android:label="@string/sign_up"
+            android:theme="@style/NoActionBarFullscreen"/>
         <!-- 忘记密码页面 -->
         <activity
             android:name=".ui.ForgetPasswordActivity"
-            android:label="@string/forgot_password"/>
-        <!-- 快递查询页面 -->
+            android:label="@string/forgot_password"
+         android:theme="@style/NoActionBarFullscreen"/>
         <activity
-            android:name=".ui.CourierActivity"
-            android:label="@string/courier"/>
+            android:name=".ui.UpdatePasswordActivity"
+            android:label="@string/change_password"/>
         <!-- 个人中心 -->
         <activity
             android:name=".ui.UserActivity"
-            android:windowSoftInputMode="stateHidden|stateUnchanged"
-            android:label="@string/user_center"/>
+            android:label="@string/user_center"
+            android:theme="@style/AboutAppTheme"/>
 
         <activity android:name=".detail.DetailActivity"
             android:label="@string/title_activity_read"
             android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity
-            android:name=".ui.AboutActivity"
-            android:label="@string/about" />
         <activity
             android:name=".ui.InnerBrowserActivity"
             android:configChanges="orientation|keyboardHidden|screenSize|screenLayout"
