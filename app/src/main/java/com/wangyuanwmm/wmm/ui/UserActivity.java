@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -125,6 +126,18 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
         et_sex.setEnabled(is);
         et_age.setEnabled(is);
         et_desc.setEnabled(is);
+    }
+
+    //Toolbar中的返回键，点击事件
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

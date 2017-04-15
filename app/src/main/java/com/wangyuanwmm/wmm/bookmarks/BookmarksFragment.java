@@ -92,11 +92,13 @@ public class BookmarksFragment extends Fragment
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_search) {
-            startActivity(new Intent(getActivity(), SearchActivity.class));
-        } else if (id == R.id.action_feel_lucky) {
-            presenter.feelLucky();
-        }
+//        if (id == R.id.action_search) {
+//            startActivity(new Intent(getActivity(), SearchActivity.class));
+//        } else
+
+            if (id == R.id.action_feel_lucky) {
+                presenter.feelLucky();
+            }
         return true;
     }
 

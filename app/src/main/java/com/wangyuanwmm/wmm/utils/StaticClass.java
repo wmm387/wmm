@@ -56,15 +56,15 @@ public class StaticClass {
 
     //极速新闻API
     //头条
-    public static final String TOP_API = "http://api.jisuapi.com/news/get?channel=%E5%A4%B4%E6%9D%A1&start=0&num=10&appkey=e6a45186161863e8";
+    public static final String TOP_API = "http://api.jisuapi.com/news/get?channel=%E5%A4%B4%E6%9D%A1&start=0&num=30&appkey=e6a45186161863e8";
     //新闻
-    public static final String NEWS_API = "http://api.jisuapi.com/news/get?channel=%E6%96%B0%E9%97%BB&start=0&num=10&appkey=e6a45186161863e8";
+    public static final String NEWS_API = "http://api.jisuapi.com/news/get?channel=%E6%96%B0%E9%97%BB&start=0&num=30&appkey=e6a45186161863e8";
     //科技
-    public static final String TECh_API = "http://api.jisuapi.com/news/get?channel=%E7%A7%91%E6%8A%80&start=0&num=10&appkey=e6a45186161863e8";
+    public static final String TECh_API = "http://api.jisuapi.com/news/get?channel=%E7%A7%91%E6%8A%80&start=0&num=30&appkey=e6a45186161863e8";
     //财经
-    public static final String MONEY_API = "http://api.jisuapi.com/news/get?channel=%E8%B4%A2%E7%BB%8F&start=0&num=10&appkey=e6a45186161863e8";
+    public static final String MONEY_API = "http://api.jisuapi.com/news/get?channel=%E8%B4%A2%E7%BB%8F&start=0&num=30&appkey=e6a45186161863e8";
     //体育
-    public static final String PT_API = "http://api.jisuapi.com/news/get?channel=%E4%BD%93%E8%82%B2&start=0&num=10&appkey=e6a45186161863e8";
+    public static final String PT_API = "http://api.jisuapi.com/news/get?channel=%E4%BD%93%E8%82%B2&start=0&num=30&appkey=e6a45186161863e8";
 
 
     //Bmob ApplicationID

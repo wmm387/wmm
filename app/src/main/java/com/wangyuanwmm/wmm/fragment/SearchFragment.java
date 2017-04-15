@@ -1,5 +1,6 @@
 package com.wangyuanwmm.wmm.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -21,6 +22,7 @@ import com.wangyuanwmm.wmm.entity.BeanType;
 import com.wangyuanwmm.wmm.entity.DoubanMomentNews;
 import com.wangyuanwmm.wmm.entity.GuokrHandpickNews;
 import com.wangyuanwmm.wmm.entity.ZhihuDailyNews;
+import com.wangyuanwmm.wmm.ui.LoginActivity;
 import com.wangyuanwmm.wmm.ui.SearchActivity;
 
 import java.util.ArrayList;
@@ -129,9 +131,17 @@ public class SearchFragment extends Fragment
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            getActivity().onBackPressed();
+//        if (item.getItemId() == android.R.id.home) {
+////            getActivity().onBackPressed();
+//            startActivity(new Intent(getActivity(), LoginActivity.class));
+//        }
+
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                getActivity().onBackPressed();
+                break;
         }
+
         return super.onOptionsItemSelected(item);
     }
 }

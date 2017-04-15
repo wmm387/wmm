@@ -1,28 +1,9 @@
-/*
- * Copyright 2017 lizhaotailang
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.wangyuanwmm.wmm.utils;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-/**
- * Created by lizhaotailang on 2016/5/8.
- */
 public class DatabaseHelper extends SQLiteOpenHelper {
 
 
@@ -53,6 +34,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + "douban_news text,"
                 + "douban_time real,"
                 + "douban_content text)");
+        db.execSQL("create table if not exists News("
+                + "id integer primary key autoincrement,"
+                + "news_title text,"
+                + "news_news text,"
+                + "news_time real,"
+                + "news_content text)");
 
         db.execSQL("alter table Zhihu add column bookmark integer default 0");
         db.execSQL("alter table Guokr add column bookmark integer default 0");
@@ -107,6 +94,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         + "douban_news text,"
                         + "douban_time integer,"
                         + "douban_content text)");
+                db.execSQL("create table if not exists News("
+                        + "id integer primary key autoincrement,"
+                        + "news_title text,"
+                        + "news_news text,"
+                        + "news_time integer,"
+                        + "news_content text)");
             case 4:
                 /**
                  * bookmark means if this obj is bookmarked

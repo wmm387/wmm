@@ -1,13 +1,9 @@
 package com.wangyuanwmm.wmm.application;
 
-import android.app.Activity;
 import android.app.Application;
 import android.support.v7.app.AppCompatDelegate;
 
 import com.wangyuanwmm.wmm.utils.StaticClass;
-
-import java.util.LinkedList;
-import java.util.List;
 
 import cn.bmob.v3.Bmob;
 

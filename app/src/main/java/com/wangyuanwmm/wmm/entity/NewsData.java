@@ -6,8 +6,12 @@ public class NewsData {
     private String title;
     //出处
     private String source;
+
     //图片的url
     private String imgUrl;
+
+    //原文地址
+    private String url;
 
     public String getTitle() {
         return title;
@@ -31,6 +35,14 @@ public class NewsData {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
 }

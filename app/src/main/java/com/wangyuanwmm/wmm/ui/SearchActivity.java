@@ -10,12 +10,14 @@ import com.wangyuanwmm.wmm.Presenter.SearchPresenter;
 
 public class SearchActivity extends AppCompatActivity {
 
+    private SearchFragment fragment;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.frame);
 
-        SearchFragment fragment = SearchFragment.newInstance();
+        fragment = SearchFragment.newInstance();
 
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.container, fragment)

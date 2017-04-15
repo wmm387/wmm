@@ -15,10 +15,6 @@ import com.wangyuanwmm.wmm.utils.PicassoUtils;
 
 import java.util.List;
 
-/**
- * Created by Administrator on 2017/4/7.
- */
-
 public class TechAdapter extends BaseAdapter {
 
     private Context mContext;

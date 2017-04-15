@@ -40,6 +40,9 @@ public class CacheService extends Service {
     public static final int TYPE_ZHIHU = 0x00;
     public static final int TYPE_GUOKR = 0x01;
     public static final int TYPE_DOUBAN = 0x02;
+    public static final int TYPE_NEWS = 0x03;
+    public static final int TYPE_TECH = 0x04;
+    public static final int TYPE_TOP = 0x05;
 
     @Override
     public void onCreate() {
@@ -177,6 +180,38 @@ public class CacheService extends Service {
                             ContentValues values = new ContentValues();
                             values.put("guokr_content", s);
                             db.update("Guokr", values, "guokr_id = ?", new String[] {String.valueOf(id)});
+                            values.clear();
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError volleyError) {
+
+                        }
+                    });
+                    request.setTag(TAG);
+                    VolleySingleton.getVolleySingleton(CacheService.this).getRequestQueue().add(request);
+                }
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+    }
+
+    /**
+     * 网络请求新闻的消息内容主体并存储
+     * @param title 对应的title
+     */
+    private void startNewsCache(final String title) {
+        Cursor cursor = db.query("News", null, null, null, null, null, null);
+        if (cursor.moveToFirst()) {
+            do {
+                if ((cursor.getString(cursor.getColumnIndex("news_title")) == title)
+                        && (cursor.getString(cursor.getColumnIndex("news_content")).equals(""))) {
+                    StringRequest request = new StringRequest(StaticClass.NEWS_API, new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String s) {
+                            ContentValues values = new ContentValues();
+                            values.put("news_content", s);
+                            db.update("News", values, "news_title = ?", new String[] {String.valueOf(title)});
                             values.clear();
                         }
                     }, new Response.ErrorListener() {
