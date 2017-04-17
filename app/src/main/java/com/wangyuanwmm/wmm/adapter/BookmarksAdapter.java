@@ -20,6 +20,8 @@ import com.wangyuanwmm.wmm.entity.ZhihuDailyNews;
 import java.util.ArrayList;
 import java.util.List;
 
+//收藏数据适配器
+
 public class BookmarksAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private final Context context;

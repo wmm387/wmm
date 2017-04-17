@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single"
-        android:id="@+id/group_main">
+    <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_list_black_24dp"
@@ -18,8 +17,7 @@
 
     </group>
 
-    <group android:checkableBehavior="none"
-        android:id="@+id/group_other">
+    <group android:checkableBehavior="none">
 
         <item
             android:id="@+id/nav_user"
@@ -30,15 +28,10 @@
             android:title="@string/change_theme"
             android:icon="@drawable/ic_brightness_6_black_24dp" />
 
-        <!--item
-            android:id="@+id/nav_settings"
-            android:icon="@drawable/ic_settings_black_24dp"
-            android:title="@string/settings" /-->
-
         <item
             android:id="@+id/nav_exit"
             android:icon="@android:drawable/ic_delete"
-            android:title="@string/exit" />
+            android:title="@string/close" />
     </group>
 
 </menu>

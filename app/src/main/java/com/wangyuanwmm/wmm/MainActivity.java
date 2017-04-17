@@ -5,18 +5,21 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,8 +31,15 @@ import com.wangyuanwmm.wmm.fragment.PPFragment;
 import com.wangyuanwmm.wmm.service.CacheService;
 import com.wangyuanwmm.wmm.ui.LoginActivity;
 import com.wangyuanwmm.wmm.ui.UserActivity;
+import com.wangyuanwmm.wmm.utils.FastBlurUtil;
 
 import cn.bmob.v3.BmobUser;
+
+/**
+ * 软件主界面
+ * 是一个带有侧滑栏的fragment容器
+ * 并设置一高斯图片做背景
+ */
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -42,6 +52,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Toolbar toolbar;
 
     private MyUser userInfo;
+
+    private ImageView blur_image;
 
     public static final String ACTION_BOOKMARKS = "com.wangyuanwmm.wmm.bookmarks";
 
@@ -98,18 +110,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     //初始化View
     private void initView() {
+
+        //初始化toolbar，并设置点击事件
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_menu);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawer.openDrawer(GravityCompat.START);
+            }
+        });
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this,
-                drawer,
-                toolbar,
-                R.string.navigation_drawer_open,
-                R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -132,6 +145,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             });
         }
+
+        //设置高斯图片
+        blur_image = (ImageView) findViewById(R.id.blur_image);
+        Resources res = getResources();
+        Bitmap scaledBitmap = BitmapFactory.decodeResource(res, R.drawable.main_bg);
+
+        Bitmap blurBitmap = FastBlurUtil.toBlur(scaledBitmap, 10);
+        blur_image.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        blur_image.setImageBitmap(blurBitmap);
     }
 
     @Override
@@ -143,11 +165,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }
         super.onDestroy();
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
     }
 
     @Override
@@ -166,32 +183,37 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    //侧滑栏菜单点击事件
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        drawer.closeDrawer(GravityCompat.START);
 
         int id = item.getItemId();
         if (id == R.id.nav_home) {
+            drawer.closeDrawer(GravityCompat.START);
             showMainFragment();
         } else if (id == R.id.nav_bookmarks) {
             if (userInfo != null) {
+                drawer.closeDrawer(GravityCompat.START);
                 showBookmarksFragment();
             } else {
                 Toast.makeText(this, "请先登录", Toast.LENGTH_SHORT).show();
             }
         } else if (id == R.id.nav_news){
             if (userInfo != null) {
+                drawer.closeDrawer(GravityCompat.START);
                 showNewsFragment();
             } else {
                 Toast.makeText(this, "请先登录", Toast.LENGTH_SHORT).show();
             }
         } else if (id == R.id.nav_user){
             if (userInfo != null) {
+                drawer.closeDrawer(GravityCompat.START);
                 showUserCenter();
             } else {
                 Toast.makeText(this, "请先登录", Toast.LENGTH_SHORT).show();
             }
         } else if (id == R.id.nav_change_theme) {
+            drawer.closeDrawer(GravityCompat.START);
 
             // 更换夜间主题
             drawer.addDrawerListener(new DrawerLayout.DrawerListener() {
@@ -228,12 +250,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         }
         else if (id == R.id.nav_exit) {
+            drawer.closeDrawer(GravityCompat.START);
             finish();
         }
 
         return true;
     }
 
+    //加载首页
     private void showMainFragment() {
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -245,6 +269,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar.setTitle(getResources().getString(R.string.app_name));
     }
 
+    //加载新闻页
     private void showNewsFragment() {
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -256,6 +281,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar.setTitle("新闻头条");
     }
 
+    //加载收藏页
     private void showBookmarksFragment() {
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -271,6 +297,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    //跳转个人中心
     private void showUserCenter() {
         Intent intent = new Intent(this, UserActivity.class);
         startActivity(intent);

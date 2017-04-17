@@ -2,7 +2,6 @@ package com.wangyuanwmm.wmm.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,6 +21,7 @@ import java.util.ArrayList;
 /**
  * 果壳精选
  */
+
 public class GuokrFragment extends Fragment implements GuokrContract.View{
 
     private RecyclerView recyclerView;
@@ -36,11 +36,6 @@ public class GuokrFragment extends Fragment implements GuokrContract.View{
 
     public static GuokrFragment newInstance() {
         return new GuokrFragment();
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Nullable
@@ -85,14 +80,6 @@ public class GuokrFragment extends Fragment implements GuokrContract.View{
 
     @Override
     public void showError() {
-//        Snackbar.make(refreshLayout, R.string.loaded_failed, Snackbar.LENGTH_INDEFINITE)
-//                .setAction(R.string.retry, new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        presenter.refresh();
-//                    }
-//                })
-//                .show();
     }
 
     @Override

@@ -15,6 +15,8 @@ import com.wangyuanwmm.wmm.utils.PicassoUtils;
 
 import java.util.List;
 
+//头条数据适配器
+
 public class TopAdapter extends BaseAdapter {
 
     private Context mContext;

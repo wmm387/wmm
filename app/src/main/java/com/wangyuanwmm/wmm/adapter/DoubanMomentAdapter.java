@@ -18,6 +18,8 @@ import com.wangyuanwmm.wmm.entity.DoubanMomentNews;
 import java.util.ArrayList;
 import java.util.List;
 
+//豆瓣一刻数据适配器
+
 public class DoubanMomentAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private final Context context;
@@ -73,9 +75,6 @@ public class DoubanMomentAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
 
             }
         }
-
-        // handle the footer
-
     }
 
 

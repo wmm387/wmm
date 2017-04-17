@@ -171,14 +171,6 @@ public class DetailFragment extends Fragment
 
     @Override
     public void showLoadingError() {
-//        Snackbar.make(imageView,R.string.loaded_failed, Snackbar.LENGTH_INDEFINITE)
-//                .setAction(R.string.retry, new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        presenter.requestData();
-//                    }
-//                })
-//                .show();
     }
 
     @Override

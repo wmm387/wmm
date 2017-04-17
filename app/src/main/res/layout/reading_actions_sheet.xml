@@ -8,7 +8,6 @@
     app:behavior_hideable="true"
     app:behavior_peekHeight="0dp"
     style="?attr/bottomSheetStyle"
-    android:id="@+id/reading_bottom_sheet"
     android:background="@color/viewBackground">
 
     <LinearLayout

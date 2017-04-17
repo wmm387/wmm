@@ -37,7 +37,7 @@ public class ZhihuDailyPresenter implements ZhihuDailyContract.Presenter {
     private UtilTools formatter = new UtilTools();
     private Gson gson = new Gson();
 
-    private ArrayList<ZhihuDailyNews.Question> list = new ArrayList<ZhihuDailyNews.Question>();
+    private ArrayList<ZhihuDailyNews.Question> list = new ArrayList<>();
 
     private DatabaseHelper dbHelper;
     private SQLiteDatabase db;

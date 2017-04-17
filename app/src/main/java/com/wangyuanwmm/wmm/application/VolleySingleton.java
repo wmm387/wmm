@@ -6,9 +6,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
-/**
- * 创建Volley的单列VolleySingleton
- */
+//创建Volley的单列VolleySingleton
 
 public class VolleySingleton {
 

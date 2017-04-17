@@ -1,6 +1,5 @@
 package com.wangyuanwmm.wmm.bookmarks;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -21,9 +20,10 @@ import com.wangyuanwmm.wmm.entity.BeanType;
 import com.wangyuanwmm.wmm.entity.DoubanMomentNews;
 import com.wangyuanwmm.wmm.entity.GuokrHandpickNews;
 import com.wangyuanwmm.wmm.entity.ZhihuDailyNews;
-import com.wangyuanwmm.wmm.ui.SearchActivity;
 
 import java.util.ArrayList;
+
+//收藏界面
 
 public class BookmarksFragment extends Fragment
         implements BookmarksContract.View {
@@ -37,11 +37,6 @@ public class BookmarksFragment extends Fragment
 
     public static BookmarksFragment newInstance() {
         return new BookmarksFragment();
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Nullable
@@ -91,12 +86,7 @@ public class BookmarksFragment extends Fragment
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-//        if (id == R.id.action_search) {
-//            startActivity(new Intent(getActivity(), SearchActivity.class));
-//        } else
-
-            if (id == R.id.action_feel_lucky) {
+        if (item.getItemId() == R.id.action_feel_lucky) {
                 presenter.feelLucky();
             }
         return true;

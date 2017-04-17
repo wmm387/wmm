@@ -8,8 +8,9 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.wangyuanwmm.wmm.R;
 import com.wangyuanwmm.wmm.fragment.DoubanMomentFragment;
 import com.wangyuanwmm.wmm.fragment.GuokrFragment;
-import com.wangyuanwmm.wmm.fragment.NewFragment;
 import com.wangyuanwmm.wmm.fragment.ZhihuDailyFragment;
+
+//主页Fragment适配器
 
 public class MainPagerAdapter extends FragmentPagerAdapter {
 
@@ -19,7 +20,6 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
     private GuokrFragment guokrFragment;
     private ZhihuDailyFragment zhihuFragment;
     private DoubanMomentFragment doubanFragment;
-    //private NewFragment newFragment;
 
     public GuokrFragment getGuokrFragment() {
         return guokrFragment;
@@ -32,10 +32,6 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
     public DoubanMomentFragment getDoubanFragment() {
         return doubanFragment;
     }
-
-//    public NewFragment getNewFragment() {
-//        return newFragment;
-//    }
 
     public MainPagerAdapter(FragmentManager fm,
                             Context context,

@@ -40,9 +40,6 @@ public class CacheService extends Service {
     public static final int TYPE_ZHIHU = 0x00;
     public static final int TYPE_GUOKR = 0x01;
     public static final int TYPE_DOUBAN = 0x02;
-    public static final int TYPE_NEWS = 0x03;
-    public static final int TYPE_TECH = 0x04;
-    public static final int TYPE_TOP = 0x05;
 
     @Override
     public void onCreate() {
@@ -61,16 +58,6 @@ public class CacheService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
         return null;
-    }
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        return super.onStartCommand(intent, flags, startId);
-    }
-
-    @Override
-    public boolean onUnbind(Intent intent) {
-        return super.onUnbind(intent);
     }
 
     /**

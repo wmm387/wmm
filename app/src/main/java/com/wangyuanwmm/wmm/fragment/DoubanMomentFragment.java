@@ -2,8 +2,6 @@ package com.wangyuanwmm.wmm.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -28,8 +26,6 @@ public class DoubanMomentFragment extends Fragment
     private RecyclerView recyclerView;
     private SwipeRefreshLayout refreshLayout;
 
-//    private FloatingActionButton fab;
-
     private DoubanMomentAdapter adapter;
     private DoubanMomentContract.Presenter presenter;
 
@@ -42,11 +38,6 @@ public class DoubanMomentFragment extends Fragment
 
     public static DoubanMomentFragment newInstance() {
         return new DoubanMomentFragment();
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Nullable
@@ -89,19 +80,6 @@ public class DoubanMomentFragment extends Fragment
 
                 super.onScrollStateChanged(recyclerView, newState);
             }
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                isSlidingToLast = dy > 0;
-
-//                // 隐藏或者显示fab
-//                if(dy > 0) {
-//                    fab.hide();
-//                } else {
-//                    fab.show();
-//                }
-            }
         });
 
         return view;
@@ -121,9 +99,6 @@ public class DoubanMomentFragment extends Fragment
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-//        fab = (FloatingActionButton) getActivity().findViewById(R.id.fab);
-//        fab.setRippleColor(getResources().getColor(R.color.colorPrimaryDark));
-
         refreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.refreshLayout);
         //设置下拉刷新的按钮的颜色
         refreshLayout.setColorSchemeResources(R.color.colorPrimary);
@@ -142,14 +117,6 @@ public class DoubanMomentFragment extends Fragment
 
     @Override
     public void showLoadingError() {
-//        Snackbar.make(fab, R.string.loaded_failed, Snackbar.LENGTH_INDEFINITE)
-//                .setAction(R.string.retry, new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        presenter.refresh();
-//                    }
-//                })
-//                .show();
     }
 
     @Override
@@ -166,34 +133,6 @@ public class DoubanMomentFragment extends Fragment
         } else {
             adapter.notifyDataSetChanged();
         }
-    }
-
-    public void showPickDialog() {
-
-        Calendar now = Calendar.getInstance();
-        now.set(mYear, mMonth, mDay);
-        DatePickerDialog dialog = DatePickerDialog.newInstance(new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-                Calendar temp = Calendar.getInstance();
-                temp.clear();
-                temp.set(year, monthOfYear, dayOfMonth);
-                mYear = year;
-                mMonth = monthOfYear;
-                mDay = dayOfMonth;
-                presenter.loadPosts(temp.getTimeInMillis(), true);
-            }
-        }, now.get(Calendar.YEAR), now.get(Calendar.MONTH), now.get(Calendar.DAY_OF_MONTH));
-
-        dialog.setMaxDate(Calendar.getInstance());
-        Calendar minDate = Calendar.getInstance();
-        minDate.set(2014, 5, 12);
-        dialog.setMinDate(minDate);
-        // set the dialog not vibrate when date change, default value is true
-        dialog.vibrate(false);
-
-        dialog.show(getActivity().getFragmentManager(), "DatePickerDialog");
-
     }
 
 }

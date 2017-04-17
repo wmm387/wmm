@@ -39,18 +39,6 @@ public class CustomTabActivityHelper implements ServiceConnectionCallback {
     }
 
     /**
-     * Unbinds the Activity from the Custom Tabs Service.
-     * @param activity the activity that is connected to the service.
-     */
-    public void unbindCustomTabsService(Activity activity) {
-        if (mConnection == null) return;
-        activity.unbindService(mConnection);
-        mClient = null;
-        mCustomTabsSession = null;
-        mConnection = null;
-    }
-
-    /**
      * Creates or retrieves an exiting CustomTabsSession.
      *
      * @return a CustomTabsSession.
@@ -62,28 +50,6 @@ public class CustomTabActivityHelper implements ServiceConnectionCallback {
             mCustomTabsSession = mClient.newSession(null);
         }
         return mCustomTabsSession;
-    }
-
-    /**
-     * Register a Callback to be called when connected or disconnected from the Custom Tabs Service.
-     * @param connectionCallback
-     */
-    public void setConnectionCallback(ConnectionCallback connectionCallback) {
-        this.mConnectionCallback = connectionCallback;
-    }
-
-    /**
-     * Binds the Activity to the Custom Tabs Service.
-     * @param activity the activity to be binded to the service.
-     */
-    public void bindCustomTabsService(Activity activity) {
-        if (mClient != null) return;
-
-        String packageName = CustomTabsHelper.getPackageNameToUse(activity);
-        if (packageName == null) return;
-
-        mConnection = new ServiceConnection(this);
-        CustomTabsClient.bindCustomTabsService(activity, packageName, mConnection);
     }
 
     /**

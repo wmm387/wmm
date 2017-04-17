@@ -17,14 +17,13 @@ import com.wangyuanwmm.wmm.entity.ZhihuDailyNews;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 知乎日报消息适配器
- */
+//知乎日报数据适配器
+
 public class ZhihuDailyNewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private final Context context;
     private final LayoutInflater inflater;
-    private List<ZhihuDailyNews.Question> list = new ArrayList<ZhihuDailyNews.Question>();
+    private List<ZhihuDailyNews.Question> list = new ArrayList<>();
     private OnRecyclerViewOnClickListener mListener;
 
     private static final int TYPE_NORMAL = 0;
@@ -68,7 +67,6 @@ public class ZhihuDailyNewsAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             }
             ((NormalViewHolder)holder).tvLatestNewsTitle.setText(item.getTitle());
         }
-        // handle the footer view holder
     }
 
     @Override

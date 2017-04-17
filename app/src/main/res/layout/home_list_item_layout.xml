@@ -20,14 +20,16 @@
             android:ellipsize="end"
             android:gravity="center_vertical"
             android:maxLines="3"
+            android:textColor="#fff"
             android:paddingBottom="8dp"
             android:paddingTop="8dp"
             android:textSize="18sp" />
 
         <ImageView
             android:id="@+id/imageViewCover"
-            android:layout_width="80dp"
+            android:layout_width="100dp"
             android:layout_height="80dp"
+            android:scaleType="centerCrop"
             android:layout_gravity="center_vertical" />
 
     </LinearLayout>

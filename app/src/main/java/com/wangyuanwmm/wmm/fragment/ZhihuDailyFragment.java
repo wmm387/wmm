@@ -1,13 +1,9 @@
 package com.wangyuanwmm.wmm.fragment;
 
-
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -18,10 +14,8 @@ import android.view.ViewGroup;
 import com.wangyuanwmm.wmm.Interface.OnRecyclerViewOnClickListener;
 import com.wangyuanwmm.wmm.Interface.ZhihuDailyContract;
 import com.wangyuanwmm.wmm.R;
-import com.wangyuanwmm.wmm.adapter.MainPagerAdapter;
 import com.wangyuanwmm.wmm.adapter.ZhihuDailyNewsAdapter;
 import com.wangyuanwmm.wmm.entity.ZhihuDailyNews;
-import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -31,8 +25,6 @@ public class ZhihuDailyFragment extends Fragment
 
     private RecyclerView recyclerView;
     private SwipeRefreshLayout refresh;
-
-//    private FloatingActionButton fab;
 
     private TabLayout tabLayout;
 
@@ -48,10 +40,6 @@ public class ZhihuDailyFragment extends Fragment
 
     public static ZhihuDailyFragment newInstance() {
         return new ZhihuDailyFragment();
-    }
-
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Nullable
@@ -93,67 +81,9 @@ public class ZhihuDailyFragment extends Fragment
                         presenter.loadMore(c.getTimeInMillis());
                     }
                 }
-
                 super.onScrollStateChanged(recyclerView, newState);
             }
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                isSlidingToLast = dy > 0;
-
-//                // 隐藏或者显示fab
-//                if(dy > 0) {
-//                    fab.hide();
-//                } else {
-//                    fab.show();
-//                }
-            }
         });
-
-        // 直接将豆瓣精选的fab点击事件放在知乎的部分
-        // 因为fab是属于activity的view
-        // 按通常的做法，在每个fragment中去设置监听时间会导致先前设置的listener失效
-        // 尝试将监听放置到main pager adapter中，这样做会引起fragment中recycler view和fab的监听冲突
-        // fab并不能获取到点击事件
-        // 根据tab layout的位置选择显示不同的dialog
-        /**
-         * 因为各种新闻的接口问题，使用固定日期搜索很不方便，暂时取消fab的功能
-         */
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (tabLayout.getSelectedTabPosition() == 0) {
-//                    Calendar now = Calendar.getInstance();
-//                    now.set(mYear, mMonth, mDay);
-//                    DatePickerDialog dialog = DatePickerDialog.newInstance(new DatePickerDialog.OnDateSetListener() {
-//                        @Override
-//                        public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-//                            mYear = year;
-//                            mMonth = monthOfYear;
-//                            mDay = dayOfMonth;
-//                            Calendar temp = Calendar.getInstance();
-//                            temp.clear();
-//                            temp.set(year, monthOfYear, dayOfMonth);
-//                            presenter.loadPosts(temp.getTimeInMillis(), true);
-//                        }
-//                    }, now.get(Calendar.YEAR), now.get(Calendar.MONTH), now.get(Calendar.DAY_OF_MONTH));
-//
-//                    dialog.setMaxDate(Calendar.getInstance());
-//                    Calendar minDate = Calendar.getInstance();
-//                    // 2013.5.20是知乎日报api首次上线
-//                    minDate.set(2013, 5, 20);
-//                    dialog.setMinDate(minDate);
-//                    dialog.vibrate(false);
-//
-//                    dialog.show(getActivity().getFragmentManager(), "DatePickerDialog");
-//                } else if (tabLayout.getSelectedTabPosition() == 2) {
-//                    ViewPager p = (ViewPager) getActivity().findViewById(R.id.view_pager);
-//                    MainPagerAdapter ad = (MainPagerAdapter) p.getAdapter();
-//                    //ad.getDoubanFragment().showPickDialog();
-//                }
-//            }
-//        });
 
         return view;
     }
@@ -176,23 +106,12 @@ public class ZhihuDailyFragment extends Fragment
         //设置下拉刷新的按钮的颜色
         refresh.setColorSchemeResources(R.color.colorPrimary);
 
-//        fab = (FloatingActionButton) getActivity().findViewById(R.id.fab);
-//        fab.setRippleColor(getResources().getColor(R.color.colorPrimaryDark));
-
         tabLayout = (TabLayout) getActivity().findViewById(R.id.tab_layout);
 
     }
 
     @Override
     public void showError() {
-//        Snackbar.make(fab, R.string.loaded_failed, Snackbar.LENGTH_INDEFINITE)
-//                .setAction(R.string.retry, new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        presenter.refresh();
-//                    }
-//                })
-//                .show();
     }
 
     @Override

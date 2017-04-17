@@ -1,9 +1,5 @@
 package com.wangyuanwmm.wmm.entity;
 
-/**
- * Created by Administrator on 2017/4/7.
- */
-
 public class TechData {
 
     //标题

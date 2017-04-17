@@ -8,7 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="AboutAppTheme" parent="Theme.AppCompat.Light.NoActionBar"></style>
+    <style name="AboutAppTheme" parent="Theme.AppCompat.Light.NoActionBar"/>
 
     <!--全屏主题-->
     <style name="NoActionBarFullscreen" parent="Theme.AppCompat.Light.NoActionBar">
@@ -40,21 +40,6 @@
     <style name="Theme_dialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowNoTitle">true</item>
-    </style>
-
-    <style name="Transparent">
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:windowIsTranslucent">true</item>
-    </style>
-
-    <!--定义字体颜色，在夜间模式时使用
-    定义scrollbar的类型，在xml文件中定义无效-->
-    <style name="myPreferenceScreen" parent="PreferenceThemeOverlay.v14.Material">
-        <item name="android:fadeScrollbars">true</item>
-        <item name="android:scrollbars">vertical</item>
-        <item name="android:scrollbarFadeDuration">1</item>
     </style>
 
     <!--自定义CollapsingToolbarLayout字体大小 custom the title's text size of CollapsingToolBarLayout-->

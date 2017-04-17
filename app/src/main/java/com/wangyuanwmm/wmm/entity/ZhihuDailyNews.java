@@ -19,24 +19,15 @@ public class ZhihuDailyNews {
         return stories;
     }
 
-    public void setStories(ArrayList<Question> stories) {
-        this.stories = stories;
-    }
-
     public class Question {
 
         private ArrayList<String> images;
         private int type;
         private int id;
-        private String ga_prefix;
         private String title;
 
         public ArrayList<String> getImages() {
             return images;
-        }
-
-        public void setImages(ArrayList<String> images) {
-            this.images = images;
         }
 
         public int getType() {
@@ -53,14 +44,6 @@ public class ZhihuDailyNews {
 
         public void setId(int id) {
             this.id = id;
-        }
-
-        public String getGa_prefix() {
-            return ga_prefix;
-        }
-
-        public void setGa_prefix(String ga_prefix) {
-            this.ga_prefix = ga_prefix;
         }
 
         public String getTitle() {

@@ -27,6 +27,8 @@ import android.widget.TextView;
 import com.wangyuanwmm.wmm.R;
 import com.wangyuanwmm.wmm.utils.UtilTools;
 
+//内置浏览器
+
 public class InnerBrowserFragment extends Fragment {
 
     private ProgressBar progressBar;

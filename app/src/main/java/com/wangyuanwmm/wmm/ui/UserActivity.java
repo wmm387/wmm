@@ -1,21 +1,17 @@
 package com.wangyuanwmm.wmm.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.MediaStore;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,9 +19,7 @@ import android.widget.Toast;
 import com.wangyuanwmm.wmm.MainActivity;
 import com.wangyuanwmm.wmm.R;
 import com.wangyuanwmm.wmm.entity.MyUser;
-import com.wangyuanwmm.wmm.utils.L;
 import com.wangyuanwmm.wmm.utils.UtilTools;
-import com.wangyuanwmm.wmm.utils.CustomDialog;
 
 import java.io.File;
 
@@ -45,12 +39,6 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
     private EditText et_username,et_age,et_sex,et_desc;
     //圆形图片
     private CircleImageView profile_image;
-
-    private CustomDialog dialog;
-
-    //private Button btn_camera;
-    private Button btn_picture;
-    private Button btn_cancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,21 +80,6 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
 
         //读取头像图片
         UtilTools.getImageToShare(this, profile_image);
-
-        //自定义dialog
-        dialog = new CustomDialog(this, 0, 0,
-                R.layout.dialog_photo, R.style.pop_anim_style,
-                Gravity.BOTTOM, 0);
-        //屏幕外点击无效
-        dialog.setCancelable(false);
-        //在Dialog中设置按钮点击事件
-        //btn_camera = (Button) dialog.findViewById(R.id.btn_camera);
-        //btn_camera.setOnClickListener(this);
-        btn_picture = (Button) dialog.findViewById(R.id.btn_picture);
-        btn_picture.setOnClickListener(this);
-        btn_cancel = (Button) dialog.findViewById(R.id.btn_cancel);
-        btn_cancel.setOnClickListener(this);
-
 
         //默认编辑框是不能点击的
         setEnable(false);
@@ -215,18 +188,10 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.profile_image:
-//                dialog.show();
                 toPicture();
                 break;
-//            case R.id.btn_cancel:
-//                dialog.dismiss();
-//                break;
-//            case R.id.btn_camera:
-//                toCamera();
-//                break;
-//            case R.id.btn_picture:
-//                toPicture();
-//                break;
+            default:
+                break;
         }
     }
 
@@ -236,23 +201,11 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
     public static final int RESULT_REQUEST_CODE = 103;
     private File tempFile = null;
 
-    //跳转相机
-//    private void toCamera() {
-//        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//        //判断内存卡是否可用，可用则进行储存
-//        intent.putExtra(MediaStore.EXTRA_OUTPUT,
-//                Uri.fromFile(new File(Environment.getExternalStorageDirectory(),
-//                        PHOTO_FILE_NAME)));
-//        startActivityForResult(intent, CAMERA_REQUEST_CODE);
-//        dialog.dismiss();
-//    }
-
     //跳转相册
     private void toPicture() {
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
         startActivityForResult(intent, IMAGE_REQUEST_CODE);
-        dialog.dismiss();
     }
 
     @Override
@@ -287,7 +240,6 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
     private void startPhotoZoom(Uri uri) {
 
         if (uri == null) {
-            L.e("uri == null");
             return;
         }
         Intent intent = new Intent("com.android.camera.action.CROP");

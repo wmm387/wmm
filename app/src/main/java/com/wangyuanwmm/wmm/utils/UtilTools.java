@@ -3,13 +3,11 @@ package com.wangyuanwmm.wmm.utils;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Base64;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -39,12 +37,6 @@ public class UtilTools {
         sDate = format.format(d);
 
         return sDate;
-    }
-
-    //设置字体
-    public static void setFont(Context mContext, TextView textView) {
-        Typeface font = Typeface.createFromAsset(mContext.getAssets(), "fonts/FONT.TTF");
-        textView.setTypeface(font);
     }
 
     //保存图片到ShareUtils
@@ -89,29 +81,4 @@ public class UtilTools {
         return false;
     }
 
-    // 检查WiFi是否连接
-    public static boolean wifiConnected(Context context){
-        if (context != null){
-            ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo info = manager.getActiveNetworkInfo();
-            if (info != null){
-                if (info.getType() == ConnectivityManager.TYPE_WIFI)
-                    return info.isAvailable();
-            }
-        }
-        return false;
-    }
-
-    // 检查移动网络是否连接
-    public static boolean mobileDataConnected(Context context){
-        if (context != null){
-            ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo info = manager.getActiveNetworkInfo();
-            if (info != null){
-                if (info.getType() == ConnectivityManager.TYPE_MOBILE)
-                    return true;
-            }
-        }
-        return false;
-    }
 }

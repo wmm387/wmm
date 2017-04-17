@@ -34,12 +34,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + "douban_news text,"
                 + "douban_time real,"
                 + "douban_content text)");
-        db.execSQL("create table if not exists News("
-                + "id integer primary key autoincrement,"
-                + "news_title text,"
-                + "news_news text,"
-                + "news_time real,"
-                + "news_content text)");
 
         db.execSQL("alter table Zhihu add column bookmark integer default 0");
         db.execSQL("alter table Guokr add column bookmark integer default 0");
@@ -53,17 +47,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             case 1:
 
             case 2:
-                // code of database creation version 3
-                //  db.execSQL("create table if not exists LatestPosts("
-                //+ "id integer primary key,"
-                //        + "title text not null,"
-                //        + "type integer not null,"
-                //        + "img_url text not null,"
-                //        + "date integer not null)");
-                //db.execSQL("create table if not exists Contents("
-                //        + "id integer primary key,"
-                //        + "date integer not null,"
-                //        + "content text not null)");
                 db.execSQL("create table if not exists Contents(id integer primary key,date integer not null,content text not null)");
 
             case 3:
@@ -94,12 +77,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         + "douban_news text,"
                         + "douban_time integer,"
                         + "douban_content text)");
-                db.execSQL("create table if not exists News("
-                        + "id integer primary key autoincrement,"
-                        + "news_title text,"
-                        + "news_news text,"
-                        + "news_time integer,"
-                        + "news_content text)");
             case 4:
                 /**
                  * bookmark means if this obj is bookmarked

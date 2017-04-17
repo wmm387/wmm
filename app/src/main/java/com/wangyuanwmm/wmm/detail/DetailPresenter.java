@@ -25,10 +25,7 @@ import com.wangyuanwmm.wmm.customtabs.CustomTabActivityHelper;
 import com.wangyuanwmm.wmm.entity.BeanType;
 import com.wangyuanwmm.wmm.entity.DoubanMomentNews;
 import com.wangyuanwmm.wmm.entity.DoubanMomentStory;
-import com.wangyuanwmm.wmm.entity.NewsData;
 import com.wangyuanwmm.wmm.entity.StringModelImpl;
-import com.wangyuanwmm.wmm.entity.TechData;
-import com.wangyuanwmm.wmm.entity.TopData;
 import com.wangyuanwmm.wmm.entity.ZhihuDailyStory;
 import com.wangyuanwmm.wmm.utils.DatabaseHelper;
 import com.wangyuanwmm.wmm.utils.StaticClass;
@@ -48,9 +45,6 @@ public class DetailPresenter implements DetailContract.Presenter {
     private ZhihuDailyStory zhihuDailyStory;
     private String guokrStory;
     private DoubanMomentStory doubanMomentStory;
-    private TechData techData;
-    private TopData topData;
-    private NewsData newsData;
 
 
     private SharedPreferences sp;
@@ -162,10 +156,6 @@ public class DetailPresenter implements DetailContract.Presenter {
                     customTabsIntent.build(),
                     Uri.parse(url),
                     new CustomFallback() {
-                        @Override
-                        public void openUri(Activity activity, Uri uri) {
-                            super.openUri(activity, uri);
-                        }
                     }
             );
         } else {

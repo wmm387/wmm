@@ -33,7 +33,7 @@ public class GuokrPresenter implements GuokrContract.Presenter {
     private DatabaseHelper dbHelper;
     private SQLiteDatabase db;
 
-    private ArrayList<GuokrHandpickNews.result> list = new ArrayList<GuokrHandpickNews.result>();
+    private ArrayList<GuokrHandpickNews.result> list = new ArrayList<>();
     private Gson gson = new Gson();
 
     public GuokrPresenter(Context context, GuokrContract.View view) {

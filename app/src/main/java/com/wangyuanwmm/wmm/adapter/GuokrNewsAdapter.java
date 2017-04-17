@@ -17,6 +17,8 @@ import com.wangyuanwmm.wmm.entity.GuokrHandpickNews;
 import java.util.ArrayList;
 import java.util.List;
 
+//果壳精选数据适配器
+
 public class GuokrNewsAdapter extends RecyclerView.Adapter<GuokrNewsAdapter.GuokrPostViewHolder> {
 
     private final Context context;

@@ -3,7 +3,6 @@ package com.wangyuanwmm.wmm.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -17,7 +16,6 @@ import android.view.ViewGroup;
 
 import com.wangyuanwmm.wmm.Presenter.DoubanMomentPresenter;
 import com.wangyuanwmm.wmm.Presenter.GuokrPresenter;
-import com.wangyuanwmm.wmm.Presenter.NewsPresenter;
 import com.wangyuanwmm.wmm.Presenter.ZhihuDailyPresenter;
 import com.wangyuanwmm.wmm.R;
 import com.wangyuanwmm.wmm.adapter.MainPagerAdapter;
@@ -34,22 +32,15 @@ public class PPFragment extends Fragment {
     private ZhihuDailyFragment zhihuDailyFragment;
     private GuokrFragment guokrFragment;
     private DoubanMomentFragment doubanMomentFragment;
-    //private NewFragment newFragment;
 
     private ZhihuDailyPresenter zhihuDailyPresenter;
     private GuokrPresenter guokrPresenter;
     private DoubanMomentPresenter doubanMomentPresenter;
-    //private NewsPresenter newsPresenter;
 
     public PPFragment() {}
 
     public static PPFragment newInstance() {
         return new PPFragment();
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
     }
 
     @Override
@@ -70,20 +61,15 @@ public class PPFragment extends Fragment {
             doubanMomentFragment = (DoubanMomentFragment)
                     manager.getFragment(savedInstanceState, "douban");
 
-            //newFragment = (NewFragment)
-                    manager.getFragment(savedInstanceState, "news");
-
         } else {
             zhihuDailyFragment = ZhihuDailyFragment.newInstance();
             guokrFragment = GuokrFragment.newInstance();
             doubanMomentFragment = DoubanMomentFragment.newInstance();
-            //newFragment = NewFragment.newInstance();
         }
 
         zhihuDailyPresenter = new ZhihuDailyPresenter(context, zhihuDailyFragment);
         guokrPresenter = new GuokrPresenter(context, guokrFragment);
         doubanMomentPresenter = new DoubanMomentPresenter(context, doubanMomentFragment);
-        //newsPresenter = new NewsPresenter(context, newFragment);
 
     }
 
@@ -96,31 +82,6 @@ public class PPFragment extends Fragment {
         initViews(view);
 
         setHasOptionsMenu(true);
-
-        // 当tab layout位置为果壳精选时，隐藏fab
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                //暂时不添加fab按钮
-//                FloatingActionButton fab = (FloatingActionButton)
-//                        getActivity().findViewById(R.id.fab);
-//
-//                if (tab.getPosition() == 1) {
-//                    fab.hide();
-//                } else {
-//                    fab.show();
-//                }
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-            }
-
-        });
 
         return view;
     }
@@ -166,7 +127,6 @@ public class PPFragment extends Fragment {
         FragmentManager manager = getChildFragmentManager();
         manager.putFragment(outState, "zhihu", zhihuDailyFragment);
         manager.putFragment(outState, "guokr", guokrFragment);
-        //manager.putFragment(outState, "news", newFragment);
         manager.putFragment(outState, "douban", doubanMomentFragment);
     }
 

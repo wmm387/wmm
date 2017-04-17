@@ -15,6 +15,8 @@ import com.wangyuanwmm.wmm.utils.PicassoUtils;
 
 import java.util.List;
 
+//科技新闻数据适配器
+
 public class TechAdapter extends BaseAdapter {
 
     private Context mContext;

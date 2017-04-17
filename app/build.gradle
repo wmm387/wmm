@@ -12,7 +12,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
             // 设置支持的SO库架构
-            abiFilters 'armeabi' , 'x86'//, 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+            abiFilters 'armeabi' , 'x86'
         }
     }
     buildTypes {
@@ -44,13 +44,10 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'
     // 为了保持在低版本SDK中的UI一致性，引入material data time picker库
     compile 'com.wdullaer:materialdatetimepicker:2.5.0'
-
     //Tablayout
     compile 'com.android.support:design:25.0.0'
-
     //圆形头像设计
     compile 'de.hdodenhof:circleimageview:2.1.0'
-
     //picasso图片加载
     compile 'com.squareup.picasso:picasso:2.5.2'
     //PhotoView
@@ -66,11 +63,7 @@ dependencies {
         exclude group: 'com.squareup.okio'
         exclude group: 'io.reactivex'
     }
-    //RxVolley下载模块
-    compile('com.kymjs.rxvolley:okhttp:1.1.0') {
-        exclude group: 'com.squareup.okhttp3'
-        exclude group: 'com.squareup.okio'
-    }
+
     //Bmob
     compile('cn.bmob.android:bmob-sdk:3.5.0') {
         exclude group: 'com.squareup.okhttp3', module: 'okhttp'
