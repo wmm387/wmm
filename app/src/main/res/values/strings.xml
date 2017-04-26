@@ -69,4 +69,6 @@
     <string name="no_browser_found">没有找到浏览器</string>
     <string name="close">关闭</string>
     <string name="user_info">个人信息</string>
+    <string name="loaded_failed">加载失败</string>
+    <string name="retry">重试</string>
 </resources>

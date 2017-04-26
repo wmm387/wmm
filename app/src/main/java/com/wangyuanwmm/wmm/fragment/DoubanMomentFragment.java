@@ -2,6 +2,7 @@ package com.wangyuanwmm.wmm.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -38,6 +39,11 @@ public class DoubanMomentFragment extends Fragment
 
     public static DoubanMomentFragment newInstance() {
         return new DoubanMomentFragment();
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
     @Nullable
@@ -80,8 +86,20 @@ public class DoubanMomentFragment extends Fragment
 
                 super.onScrollStateChanged(recyclerView, newState);
             }
-        });
 
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                isSlidingToLast = dy > 0;
+
+//                // 隐藏或者显示fab
+//                if(dy > 0) {
+//                    fab.hide();
+//                } else {
+//                    fab.show();
+//                }
+            }
+        });
         return view;
     }
 
@@ -117,6 +135,14 @@ public class DoubanMomentFragment extends Fragment
 
     @Override
     public void showLoadingError() {
+//        Snackbar.make(refreshLayout, R.string.loaded_failed, Snackbar.LENGTH_INDEFINITE)
+//                .setAction(R.string.retry, new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        presenter.refresh();
+//                    }
+//                })
+//                .show();
     }
 
     @Override

@@ -183,38 +183,6 @@ public class CacheService extends Service {
         cursor.close();
     }
 
-    /**
-     * 网络请求新闻的消息内容主体并存储
-     * @param title 对应的title
-     */
-    private void startNewsCache(final String title) {
-        Cursor cursor = db.query("News", null, null, null, null, null, null);
-        if (cursor.moveToFirst()) {
-            do {
-                if ((cursor.getString(cursor.getColumnIndex("news_title")) == title)
-                        && (cursor.getString(cursor.getColumnIndex("news_content")).equals(""))) {
-                    StringRequest request = new StringRequest(StaticClass.NEWS_API, new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String s) {
-                            ContentValues values = new ContentValues();
-                            values.put("news_content", s);
-                            db.update("News", values, "news_title = ?", new String[] {String.valueOf(title)});
-                            values.clear();
-                        }
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError volleyError) {
-
-                        }
-                    });
-                    request.setTag(TAG);
-                    VolleySingleton.getVolleySingleton(CacheService.this).getRequestQueue().add(request);
-                }
-            } while (cursor.moveToNext());
-        }
-        cursor.close();
-    }
-
     @Override
     public void onDestroy() {
         super.onDestroy();

@@ -156,6 +156,10 @@ public class DetailPresenter implements DetailContract.Presenter {
                     customTabsIntent.build(),
                     Uri.parse(url),
                     new CustomFallback() {
+                        @Override
+                        public void openUri(Activity activity, Uri uri) {
+                            super.openUri(activity, uri);
+                        }
                     }
             );
         } else {
